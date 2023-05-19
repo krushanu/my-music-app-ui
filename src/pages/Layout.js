@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import QueryWrapper from "../util/QueryWrapper";
 import { Box, Container, Typography } from "@mui/material";
+import Collection from "../components/Collection";
 
 const Layout = () => {
   return (
@@ -10,6 +11,7 @@ const Layout = () => {
           <Typography variant="h4" component="h1" gutterBottom>
             My Song Collection
           </Typography>
+          <Collection />
 
           <Outlet />
         </Box>

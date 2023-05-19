@@ -1,6 +1,12 @@
 import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography } from "@mui/material"
+import { useDispatch, useSelector } from "react-redux"
+import cartSlice from "../data/cartSlice"
 
 const ArtistCard = ({ artistData }) => {
+  const { cartProductIds } = useSelector((state) => state.cart)
+  const { addToCart, removeFromCart } = cartSlice.actions
+  const dispatch = useDispatch()
+
   return (
     <Card sx={{ maxWidth: 345, m: 1 }}>
       <CardActionArea>
@@ -21,12 +27,12 @@ const ArtistCard = ({ artistData }) => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
+        {!cartProductIds?.includes(artistData.name) && (<Button size="small" color="primary" onClick={() => dispatch(addToCart(artistData.name))} >
           Add
-        </Button>
-        <Button size="small" color="secondary">
+        </Button>)}
+        {cartProductIds?.includes(artistData.name) && (<Button size="small" color="secondary" onClick={() => dispatch(removeFromCart(artistData.name))}>
           Remove
-        </Button>
+        </Button>)}
       </CardActions>
     </Card>
 

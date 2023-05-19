@@ -57,8 +57,8 @@ const Album = () => {
 
   return (
     <>
-      <Link to="/">
-        <Button variant="outlined" startIcon={<ArrowBackIcon />}>
+      <Link  to="/">
+        <Button sx={{ my: 2 }} variant="outlined" startIcon={<ArrowBackIcon />}>
           Back
         </Button>
       </Link>
@@ -70,21 +70,21 @@ const Album = () => {
         justifyContent="center"
         maxWidth="lg"
       >
-      <Grid container spacing={8}
-        display="flex"
-        direction="row"
-        alignItems="center"
-        justifyContent="center"
+        <Grid container spacing={8}
+          display="flex"
+          direction="row"
+          alignItems="center"
+          justifyContent="center"
           maxWidth="lg"
           sx={{ mt: 5 }}
 
-      >
-        {albumData?.map(eachData => {
-          return (
-            <AlbumCard key={eachData.id} albumData={eachData} />
-          )
-        })}
-      </Grid>
+        >
+          {albumData?.map(eachData => {
+            return (
+              <AlbumCard key={eachData.id} albumData={eachData} />
+            )
+          })}
+        </Grid>
         <LoadMore endOfPage={endOfPage} nextPage={nextPage} />
       </Grid>
     </>

@@ -3,7 +3,7 @@ import './../App.css';
 import { Button, Grid } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-function Home() {
+const Home = () => {
 
   return (
     <div className="App">
