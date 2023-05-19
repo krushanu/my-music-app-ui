@@ -12,13 +12,13 @@ function Home() {
 
         <Grid container >
           <Grid >
-            <Button variant="contained"><Link to="/artist">Artist</Link></Button>
+            <Button variant="contained" size="large"><Link to="/artist">Artist</Link></Button>
           </Grid>
           <Grid>
-            <Button variant="contained"><Link to="/album">Album</Link></Button>
+            <Button variant="contained" size="large"><Link to="/album">Album</Link></Button>
           </Grid>
           <Grid>
-            <Button variant="contained"><Link to="/song">Song</Link></Button>
+            <Button variant="contained" size="large"><Link to="/song">Song</Link></Button>
           </Grid>
         </Grid>
       </header>
@@ -27,6 +27,3 @@ function Home() {
 }
 
 export default Home;
-
-
-

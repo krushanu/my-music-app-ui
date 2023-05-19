@@ -4,6 +4,9 @@ import getData from "../util/connect";
 import LoadMore from "../components/LoadMoreButton";
 import { useQuery } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
+import { Button, Grid } from "@mui/material";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import AlbumCard from "../components/AlbumCard";
 
 const EACHCALLLIMIT = 5
 let toastPostId
@@ -37,7 +40,7 @@ const Album = () => {
     }
   }
 
-  const { data, isLoading, refetch } = useQuery({
+  const { data, refetch } = useQuery({
     queryFn: fetchAlbumData,
     queryKey: ["Album-Data"],
     refetchOnWindowFocus: false,
@@ -54,12 +57,36 @@ const Album = () => {
 
   return (
     <>
-      <Link to="/">Back</Link>
-      <h1>Album</h1>
-      {albumData?.map(eachData => {
-        return <p key={eachData.id}>{eachData.name}</p>
-      })}
-      <LoadMore endOfPage={endOfPage} nextPage={nextPage} />
+      <Link to="/">
+        <Button variant="outlined" startIcon={<ArrowBackIcon />}>
+          Back
+        </Button>
+      </Link>
+      <h1>Album List</h1>
+      <Grid container spacing={8}
+        display="flex"
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        maxWidth="lg"
+      >
+      <Grid container spacing={8}
+        display="flex"
+        direction="row"
+        alignItems="center"
+        justifyContent="center"
+          maxWidth="lg"
+          sx={{ mt: 5 }}
+
+      >
+        {albumData?.map(eachData => {
+          return (
+            <AlbumCard key={eachData.id} albumData={eachData} />
+          )
+        })}
+      </Grid>
+        <LoadMore endOfPage={endOfPage} nextPage={nextPage} />
+      </Grid>
     </>
   )
 };
